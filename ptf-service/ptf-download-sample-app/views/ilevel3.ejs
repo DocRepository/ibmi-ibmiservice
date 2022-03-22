@@ -1,0 +1,69 @@
+
+<style>table, th, td {border: 1px solid black;border-collapse: collapse;font-size: 12px;}
+tr:nth-child(odd) {background-color:#fff;}th {background-color: #0000CD;color: white;}</style>
+<style>input[type=botton] {
+font-weight:bold; width:120px; background:#0000CD; color:#ffffff; box-shadow:6px 6px 3px #666666; text-align:center;}         
+</style>
+
+<head>
+<meta http-equiv=Content-Type content=text/html;charset=utf-8/>
+<title>Node.js</title>
+<!--
+<input type=botton onclick=location.href='http://localhost/IBMiDemo' value=メニューに戻る readonly/>
+-->
+<h1>IBM i Serviceによる最新PTF取得</h1>
+
+</head>
+
+<table>
+    <tr>
+        <th><small>PTF GROUP CURRENCY</small></th>
+        <th>PTF GROUP ID</th>
+        <th>PTF GROUP TITLE</th>
+        <th>PTF GROUP LEVEL INSTALLED</th>
+        <th>PTF GROUP LEVEL AVAILABLE</th>
+        <th>PTF GROUP LAST UPDATED BY IBM</th>
+        <th>PTF GROUP RELEASE</th>
+        <th>PTF GROUP STATUS ON SYSTEM</th>
+    </tr>
+    <% for (let ilevel3 of ilevels3) { %>
+        <% if (ilevel3.GRPCUR === 'UPDATE AVAILABLE') { %>
+            <tr>
+                <td><%- ilevel3.GRPCUR %></td>
+                <form method="get" action="./ptf_download">
+                    <td>
+                        <input  id="btn" type="submit" name=ptfno value=<%- ilevel3.GRP_ID %> onclick="return Check()"><br>DOWNLOAD</button>
+                        <script type="text/javascript">
+                            function Check(){
+                            var checked = confirm("DOWNLOADを実行しますか？*SAVF形式で保管されます。入手するグループPTFによっては、自動で適用まで実行される場合があります。");
+                            if (checked == true) {
+                               alert("SNDPTFORDコマンドがバッチに投入されました。")
+                               return true;
+                            } else {
+                               return false;
+                            }
+                            }
+                        </script>
+                    </td>
+                </form>
+                <td><font color="blue"><%- ilevel3.NAME %></font></td>
+                <td><font color="red"><%- ilevel3.GRP_LVL %></font></td>
+                <td><font color="blue"><%- ilevel3.GRP_IBMLVL %></font></td>
+                <td><%- ilevel3.GRP_LSTUPD %></td>
+                <td><%- ilevel3.GRP_RLS %></td>
+                <td><%- ilevel3.GRP_SYSSTS %></td>
+            </tr>
+        <% } else { %>
+            <tr>
+                <td><%- ilevel3.GRPCUR %></font></td>
+                <td><%- ilevel3.GRP_ID %></td>
+                <td><%- ilevel3.NAME %></td>
+                <td><%- ilevel3.GRP_LVL %></td>
+                <td><%- ilevel3.GRP_IBMLVL %></td>
+                <td><%- ilevel3.GRP_LSTUPD %></td>
+                <td><%- ilevel3.GRP_RLS %></td>
+                <td><%- ilevel3.GRP_SYSSTS %></td>
+            </tr>
+        <% } %>
+    <% } %>
+</table>
