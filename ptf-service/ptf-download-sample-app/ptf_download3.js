@@ -1,18 +1,16 @@
 const { Connection, CommandCall } = require('itoolkit');
 const { parseString } = require('xml2js');
-var http = require('http');
-var fs = require('fs');
 var url = require('url');
 var express = require('express');
 var app = express();
 var select_ptfno = "";
 app.set("view engine", "ejs");
 
-var DBname = "IBMIDEMO";
-var userId = "YAG";
-var passwd = "passw0rd";
-var ip = "127.0.0.1"
-var port = 60056;
+var DBname = "IBMIDEMO"; // WRKRDBDIREの項目名を指定する
+var userId = "USER"; // IBM iのユーザーを指定する
+var passwd = "PASSWORD"; // IBM iのユーザーのパスワードを指定する
+var ip = "127.0.0.1"; // CLコマンド投入先のipアドレスを指定しても良い
+var port = 50056; // ポート番号は変更可能
 
 app.get('/', (req, res) => {
     const {dbconn, dbstmt} = require('idb-connector');
@@ -63,6 +61,7 @@ app.get('/ptf_download', (req, res) => {
             console.log(JSON.stringify(result));
         });
     });
+    // Nodejsは、非同期実行のため、処理順の調整でWAITしている
     setTimeout(() => {
         res.redirect("/");
     }, 3000);
