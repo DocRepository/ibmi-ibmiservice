@@ -31,7 +31,7 @@ font-weight:bold; width:120px; background:#0000CD; color:#ffffff; box-shadow:6px
                         <input  id="btn" type="submit" name=ptfno value=<%- ilevel3.GRP_ID %> onclick="return Check()"><br>DOWNLOAD</button>
                         <script type="text/javascript">
                             function Check(){
-                            var checked = confirm("DOWNLOADを実行しますか？*SAVF形式で保管されます。入手するグループPTFによっては、自動で適用まで実行される場合があります。");
+                            var checked = confirm("DOWNLOADを実行しますか？*SAVF形式で保管されます。");
                             if (checked == true) {
                                alert("SNDPTFORDコマンドがバッチに投入されました。")
                                return true;
