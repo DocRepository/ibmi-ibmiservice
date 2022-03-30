@@ -2,7 +2,7 @@
 <style>table, th, td {border: 1px solid black;border-collapse: collapse;font-size: 12px;}
 tr:nth-child(odd) {background-color:#fff;}th {background-color: #0000CD;color: white;}</style>
 <style>input[type=botton] {
-font-weight:bold; width:120px; background:#0000CD; color:#ffffff; box-shadow:6px 6px 3px #666666; text-align:center;}         
+font-weight:bold; width:120px; background:#0000CD; color:#ffffff; box-shadow:6px 6px 3px #666666; text-align:center;}
 </style>
 
 <head>
@@ -31,7 +31,7 @@ font-weight:bold; width:120px; background:#0000CD; color:#ffffff; box-shadow:6px
                         <input  id="btn" type="submit" name=ptfno value=<%- ilevel3.GRP_ID %> onclick="return Check()"><br>DOWNLOAD</button>
                         <script type="text/javascript">
                             function Check(){
-                            var checked = confirm("DOWNLOADを実行しますか？*SAVF形式で保管されます。");
+                            var checked = confirm("DOWNLOADを実行しますか？*SAVF形式でQGPLライブラリーに保管されます。");
                             if (checked == true) {
                                alert("SNDPTFORDコマンドがバッチに投入されました。")
                                return true;
