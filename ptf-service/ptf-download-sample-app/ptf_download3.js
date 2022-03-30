@@ -12,6 +12,10 @@ var passwd = "PASSWORD"; // IBM iのユーザーのパスワードを指定す�
 var ip = "127.0.0.1"; // CLコマンド投入先のipアドレスを指定しても良い
 var port = 50056; // ポート番号は変更可能
 
+// *************************************
+// PSPとPTFレベルを比較して最新PTF情報を編集
+// *************************************
+
 app.get('/', (req, res) => {
     const {dbconn, dbstmt} = require('idb-connector');
     const sql = `With iLevel(iVersion, iRelease) AS (select OS_VERSION, OS_RELEASE from sysibmadm.env_sys_info)
@@ -36,6 +40,10 @@ app.get('/', (req, res) => {
     conn.disconn();
     conn.close();
 });
+
+// *************************************
+// SNDPTFORDコマンドの実行
+// *************************************
 
 app.get('/ptf_download', (req, res) => {
     select_ptfno = url.parse(req.url, true).query.ptfno;
