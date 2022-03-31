@@ -45,7 +45,7 @@ app.get('/', (req, res) => {
 // SNDPTFORDコマンドの実行
 // *************************************
 
-app.get('/ptf_download', (req, res) => {
+app.get('/order', (req, res) => {
     select_ptfno = url.parse(req.url, true).query.ptfno;
     console.log('SELECT_PTFNO: ' + select_ptfno);
     console.log('START IBMI COMMAND');
