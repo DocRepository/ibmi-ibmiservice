@@ -26,7 +26,7 @@ font-weight:bold; width:120px; background:#0000CD; color:#ffffff; box-shadow:6px
         <% if (ilevel3.GRPCUR === 'UPDATE AVAILABLE') { %>
             <tr>
                 <td><%- ilevel3.GRPCUR %></td>
-                <form method="get" action="./ptf_download">
+                <form method="get" action="./order">
                     <td>
                         <input  id="btn" type="submit" name=ptfno value=<%- ilevel3.GRP_ID %> onclick="return Check()"><br>DOWNLOAD</button>
                         <script type="text/javascript">
