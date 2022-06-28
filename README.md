@@ -1,2 +1,0 @@
-# ibmi-ibmiservice
-ibmi service
